@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../App';
 
-const Key = ({ keyVal }) => {
+const Key = ({ keyVal, bigKey }) => {
+    const { board, setBoard, currAttempt, setAttempt, onDelete, onEnter, onSelectLetter } = useContext(AppContext);
+    
+    const selectLetter = () => {
+        if (keyVal === 'ENTER') {
+          onEnter();
+        } else if (keyVal === 'DELETE') {
+            onDelete();
+        } else {
+        if (currAttempt.letterPosition > 4) return;
+        onSelectLetter(keyVal);
+     }
+    };
+
+
   return (
-    <div className='key'>{keyVal}</div>
+    <div className='key' id={bigKey && 'big'} onClick={selectLetter}>
+        {keyVal}
+    </div>
   )
 }
 
