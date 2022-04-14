@@ -2,6 +2,7 @@ import "./App.css";
 import Board from "./components/Board";
 import { createContext, useState } from "react";
 import { boardDefault } from "./Words";
+import Keyboard from "./components/Keyboard";
 
 export const AppContext = createContext();
 
@@ -15,6 +16,7 @@ function App() {
       </nav>
       <AppContext.Provider value={{board, setBoard}}>
         <Board />
+        <Keyboard />
       </AppContext.Provider>
    </div>
   );
